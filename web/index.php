@@ -6,5 +6,6 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
 }
 
 $app = require __DIR__ . '/../src/app.php';
+$app['debug'] = true;
 
 $app->run();
