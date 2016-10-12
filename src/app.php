@@ -3,6 +3,8 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use m1n0\BlogRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 $app = new Silex\Application();
 $blogRepository = new BlogRepository();
@@ -33,6 +35,11 @@ $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogReposit
 
     return  "<h1>{$post['title']}</h1>".
             "<p>{$post['body']}</p>";
+});
+
+// Trying POST and printing the data.
+$app->post('/feedback', function(Request $request) {
+    return new Response('Your message: ' . $request->get('message'));
 });
 
 return $app;
