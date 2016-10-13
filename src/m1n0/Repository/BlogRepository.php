@@ -1,6 +1,6 @@
 <?php
 
-namespace m1n0;
+namespace m1n0\Repository;
 
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 

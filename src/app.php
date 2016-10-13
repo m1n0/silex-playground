@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use m1n0\BlogRepository;
+use m1n0\Repository\BlogRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

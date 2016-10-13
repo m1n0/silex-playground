@@ -2,7 +2,7 @@
 
 namespace spec\m1n0;
 
-use m1n0\BlogRepository;
+use m1n0\Repository\BlogRepository;
 use PhpSpec\ObjectBehavior;
 
 class BlogRepositorySpec extends ObjectBehavior
