@@ -11,13 +11,13 @@ class BlogRepository
 {
   public $testData = [
     [
-      'date'      => '2011-03-29',
+      'created'   => '1476364162',
       'author'    => 'igorw',
       'title'     => 'Using Silex',
       'body'      => '...',
     ],
     [
-      'date'      => '2016-10-12',
+      'created'   => '1476104961',
       'author'    => 'm1n0',
       'title'     => 'Learning Silex',
       'body'      => 'Lorem Ipsum...',
