@@ -10,7 +10,7 @@ $app = new Silex\Application();
 $blogRepository = new BlogRepository();
 
 $app->get('/hello/{name}', function ($name) use ($app) {
-  return 'Hello '.$app->escape($name);
+  return 'Hello ' . $app->escape($name);
 });
 
 // Blog listing.
@@ -27,10 +27,10 @@ $app->get('/blog', function () use ($blogRepository) {
 // Blog detail.
 $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogRepository) {
     try {
-        $post = $blogRepository->get($id);
+        $post = $blogRepository->get($app->escape($id));
     }
     catch (\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
-        $app->abort(404, "Post $id does not exist.");
+        $app->abort(404, "Blog $id does not exist.");
     }
 
     return  "<h1>{$post['title']}</h1>".
