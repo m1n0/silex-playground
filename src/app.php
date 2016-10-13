@@ -32,6 +32,9 @@ $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogReposit
     catch (\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
         $app->abort(404, "Blog $id does not exist.");
     }
+    catch (TypeError $e) {
+        $app->abort(500, 'Blog ID must be an integer.');
+    }
 
     return  "<h1>{$post['title']}</h1>".
             "<p>{$post['body']}</p>";
