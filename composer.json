@@ -1,6 +1,7 @@
 {
     "require": {
-        "silex/silex": "~2.0"
+        "silex/silex": "~2.0",
+        "doctrine/dbal": "~2.2"
     },
     "require-dev": {
         "phpspec/phpspec": "^3.1"

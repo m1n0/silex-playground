@@ -7,14 +7,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 $app = new Silex\Application();
-$blogRepository = new BlogRepository();
+
+// Register all services.
+$app->register(new Silex\Provider\DoctrineServiceProvider(), [
+  'db.options' => [
+    'driver'   => 'pdo_sqlite',
+    'path'     => __DIR__ . '/../db/app.db',
+  ],
+]);
+
+// Prepare all used repositories and custom services.
+$blogRepository = new BlogRepository($app['db']);
 
 $app->get('/hello/{name}', function ($name) use ($app) {
   return 'Hello ' . $app->escape($name);
 });
 
 // Blog listing.
-$app->get('/blog', function () use ($blogRepository) {
+$app->get('/blog', function() use ($blogRepository) {
     $output = '';
     foreach ($blogRepository->getIndex() as $post) {
         $output .= $post['title'];
@@ -41,6 +51,7 @@ $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogReposit
     $blog = new stdClass();
     $blog->title = $post['title'];
     $blog->body = $post['body'];
+
 
     return $app->json($blog);
 });
