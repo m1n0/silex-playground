@@ -29,13 +29,17 @@ class BlogRepository
       return $this->testData;
   }
 
-  function get(int $index)
+  function get(int $id)
   {
-      if (!isset($this->testData[$index])) {
-          throw new ResourceNotFoundException("Blog with ID: $index not found");
+
+      $sql = "SELECT * FROM posts WHERE id = ?";
+      $post = $this->db->fetchAssoc($sql, [$id]);
+
+      if (!$post) {
+          throw new ResourceNotFoundException("Blog with ID: $id not found");
       }
 
-      return $this->testData[$index];
+      return $post;
   }
 
 }
