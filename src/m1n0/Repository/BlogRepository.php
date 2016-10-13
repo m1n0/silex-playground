@@ -2,6 +2,7 @@
 
 namespace m1n0\Repository;
 
+use Doctrine\DBAL\Connection;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 /**
@@ -9,22 +10,21 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
  */
 class BlogRepository
 {
-  public $testData = [
-    [
-      'created'   => '1476364162',
-      'author'    => 'igorw',
-      'title'     => 'Using Silex',
-      'body'      => '...',
-    ],
-    [
-      'created'   => '1476104961',
-      'author'    => 'm1n0',
-      'title'     => 'Learning Silex',
-      'body'      => 'Lorem Ipsum...',
-    ],
-  ];
+    /**
+     * @var \Doctrine\DBAL\Connection
+     */
+    private $db;
 
-  function getIndex()
+    /**
+     * BlogRepository constructor.
+     * @param \Doctrine\DBAL\Connection $db
+     */
+    public function __construct(Connection $db)
+    {
+        $this->db = $db;
+    }
+
+    function getIndex()
   {
       return $this->testData;
   }
