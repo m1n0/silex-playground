@@ -26,6 +26,8 @@ $app->get('/blog', function () use ($blogRepository) {
 
 // Blog detail.
 $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogRepository) {
+    $post = [];
+
     try {
         $post = $blogRepository->get($app->escape($id));
     }
@@ -36,8 +38,11 @@ $app->get('/blog/{id}', function (Silex\Application $app, $id) use ($blogReposit
         $app->abort(500, 'Blog ID must be an integer.');
     }
 
-    return  "<h1>{$post['title']}</h1>".
-            "<p>{$post['body']}</p>";
+    $blog = new stdClass();
+    $blog->title = $post['title'];
+    $blog->body = $post['body'];
+
+    return $app->json($blog);
 });
 
 // Trying POST and printing the data.
