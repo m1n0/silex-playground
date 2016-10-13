@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
  */
 class BlogRepository
 {
-  private $testData = [
+  public $testData = [
     [
       'date'      => '2011-03-29',
       'author'    => 'igorw',
