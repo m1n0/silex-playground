@@ -31,7 +31,6 @@ class BlogRepository
 
   function get(int $id)
   {
-
       $sql = "SELECT * FROM posts WHERE id = ?";
       $post = $this->db->fetchAssoc($sql, [$id]);
 
