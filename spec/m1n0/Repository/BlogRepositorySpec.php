@@ -24,14 +24,14 @@ class BlogRepositorySpec extends ObjectBehavior
         $sql = "SELECT * FROM posts WHERE id = ?";
 
         $testResult1 = new Blog(1, 1476364162, 1, 'Using Silex', 'Lorem Ipsum');
-        $db->fetchAssoc($sql, [0])->willReturn($testResult1);
+        $db->fetchAssoc($sql, [1])->willReturn($testResult1);
 
         $testResult2 = new Blog(2, 1476104961, 2, 'Learning Silex', 'Dolor sit amet');
-        $db->fetchAssoc($sql, [1])->willReturn($testResult2);
+        $db->fetchAssoc($sql, [2])->willReturn($testResult2);
 
         // Act.
-        $this->get(0)->shouldReturn($testResult1);
-        $this->get(1)->shouldReturn($testResult2);
+        $this->get(1)->shouldReturn($testResult1);
+        $this->get(2)->shouldReturn($testResult2);
     }
 
     function it_throws_not_found()
