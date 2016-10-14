@@ -20,9 +20,9 @@ class Blog
      */
     private $created;
     /**
-     * @var \m1n0\Entity\User
+     * @var int
      */
-    private $author;
+    private $user;
     /**
      * @var string
      */
@@ -36,16 +36,63 @@ class Blog
      * Blog constructor.
      * @param int $id
      * @param string $created
-     * @param \m1n0\Entity\User $author
+     * @param int $user
      * @param string $title
      * @param string $body
      */
-    public function __construct(int $id, string $created, User $author, string $title, string $body)
+    public function __construct(int $id, string $created, int $user, string $title, string $body)
     {
         $this->id = $id;
         $this->created = $created;
-        $this->author = $author;
+        $this->user = $user;
         $this->title = $title;
         $this->body = $body;
     }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreated(): string
+    {
+        return $this->created;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->user;
+    }
+
+    public function getUser(): User
+    {
+        // Todo: Implement getter after User is prepared.
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBody(): string
+    {
+        return $this->body;
+    }
+
+
 }
