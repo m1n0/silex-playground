@@ -1,0 +1,4 @@
+vendor/*
+bin/*
+db/*.db
+.idea
