@@ -35,6 +35,6 @@ class User
     {
         $this->id = $id;
         $this->name = $name;
-        $this->email = $mail;
+        $this->mail = $mail;
     }
 }
