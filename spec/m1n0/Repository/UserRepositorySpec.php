@@ -29,6 +29,6 @@ class UserRepositorySpec extends ObjectBehavior
         $db->fetchAssoc($query, [1])->willReturn($result);
 
         // Act.
-        $this->getUserById(1)->shouldReturn($testResultUser);
+        $this->getUserById(1)->shouldBeLike($testResultUser);
     }
 }
