@@ -18,23 +18,23 @@ class User
     /**
      * @var string
      */
-    private $username;
+    private $name;
     /**
      * @var string
      */
-    private $email;
+    private $mail;
 
 
     /**
      * User constructor.
-     * @param int $id
-     * @param string $username
-     * @param string $email
+     * @param int    $id
+     * @param string $name
+     * @param string $mail
      */
-    public function __construct(int $id, string $username, string $email)
+    public function __construct(int $id, string $name, string $mail)
     {
         $this->id = $id;
-        $this->username = $username;
-        $this->email = $email;
+        $this->name = $name;
+        $this->email = $mail;
     }
 }
