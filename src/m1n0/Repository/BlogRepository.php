@@ -24,21 +24,31 @@ class BlogRepository
         $this->db = $db;
     }
 
-    function getIndex()
-  {
-      return $this->testData;
-  }
+    /**
+     * Get all Blogs.
+     *
+     * @return mixed
+     */
+    public function getIndex()
+    {
+        return $this->testData;
+    }
 
-  function get(int $id)
-  {
-      $sql = "SELECT * FROM posts WHERE id = ?";
-      $post = $this->db->fetchAssoc($sql, [$id]);
+    /**
+     * Get Blog by Id.
+     *
+     * @param int $id
+     * @return array
+     */
+    public function get(int $id)
+    {
+        $sql = "SELECT * FROM posts WHERE id = ?";
+        $post = $this->db->fetchAssoc($sql, [$id]);
 
-      if (!$post) {
-          throw new ResourceNotFoundException("Blog with ID: $id not found");
-      }
+        if (!$post) {
+            throw new ResourceNotFoundException("Blog with ID: $id not found");
+        }
 
-      return $post;
-  }
-
+        return $post;
+    }
 }
